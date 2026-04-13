@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Classificador de Reviews de Jogos</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🎮 Classificador de Reviews de Jogos</h1>
+            <p class="subtitle">Análise de sentimento usando Machine Learning</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <h2>📝 Digite sua Review</h2>
+                
+                <!-- Selecionar jogo -->
+                <div class="game-selector">
+                    <label for="gameSelect">🎮 Jogo (opcional):</label>
+                    <select id="gameSelect" class="game-select">
+                        <option value="">Selecione um jogo...</option>
+                        <option value="570|Dota 2">Dota 2</option>
+                        <option value="730|Counter-Strike: Global Offensive">Counter-Strike: Global Offensive</option>
+                        <option value="440|Team Fortress 2">Team Fortress 2</option>
+                        <option value="271590|Grand Theft Auto V">Grand Theft Auto V</option>
+                        <option value="1091500|Cyberpunk 2077">Cyberpunk 2077</option>
+                        <option value="1174180|Red Dead Redemption 2">Red Dead Redemption 2</option>
+                        <option value="1245620|Elden Ring">Elden Ring</option>
+                        <option value="292030|The Witcher 3: Wild Hunt">The Witcher 3: Wild Hunt</option>
+                        <option value="1086940|Baldur's Gate 3">Baldur's Gate 3</option>
+                        <option value="1203220|Naraka: Bladepoint">Naraka: Bladepoint</option>
+                    </select>
+                </div>
+                
+                <textarea 
+                    id="reviewInput" 
+                    placeholder="Ex: Este jogo é absolutamente incrível! Os gráficos são impressionantes e a jogabilidade é muito fluida..."
+                    rows="5"
+                ></textarea>
+                <button id="classifyBtn" class="btn-primary">
+                    <span class="btn-text">🔍 Classificar Review</span>
+                    <span class="btn-loading" style="display: none;">⏳ Analisando...</span>
+                </button>
+            </section>
+
+            <!-- Resultado Section -->
+            <section id="resultSection" class="result-section" style="display: none;">
+                <h2>📊 Resultado da Análise</h2>
+                
+                <!-- info jogo  -->
+                <div id="gameInfo" class="game-info" style="display: none;">
+                    <img id="gameImage" src="" alt="Capa do jogo" class="game-cover">
+                    <h3 id="gameName" class="game-title"></h3>
+                </div>
+                
+                <div id="resultCard" class="result-card">
+                    <div class="sentiment-badge" id="sentimentBadge">
+                        <span class="sentiment-icon" id="sentimentIcon">✅</span>
+                        <span class="sentiment-text" id="sentimentText">Positivo</span>
+                    </div>
+                    
+                    <div class="confidence-bar">
+                        <label>Confiança:</label>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="confidenceFill"></div>
+                        </div>
+                        <span id="confidenceValue">95%</span>
+                    </div>
+                    
+                    <div class="details">
+                        <div class="detail-item">
+                            <strong>Texto Original:</strong>
+                            <p id="originalText"></p>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Texto Processado:</strong>
+                            <p id="cleanedText"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ErroSection -->
+            <section id="errorSection" class="error-section" style="display: none;">
+                <div class="error-card">
+                    <span class="error-icon">❌</span>
+                    <p id="errorMessage">Erro ao processar a review.</p>
+                </div>
+            </section>
+
+            <!-- Como funciona Section -->
+            <section class="info-section">
+                <h2>🔬 Como Funciona?</h2>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <span class="info-icon">📊</span>
+                        <h3>1. Pré-processamento</h3>
+                        <p>O texto é limpo, convertido para minúsculas e palavras comuns são removidas.</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-icon">🔢</span>
+                        <h3>2. Vetorização TF-IDF</h3>
+                        <p>O texto é transformado em números que representam a importância de cada palavra.</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-icon">🤖</span>
+                        <h3>3. Classificação ML</h3>
+                        <p>Um modelo treinado analisa os números e determina se a review é positiva ou negativa.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Desenvolvido por Marcio Caldas</p>
+           
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
